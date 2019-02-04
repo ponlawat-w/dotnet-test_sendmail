@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "SmtpTest": {
+      "commandName": "Project"
+    }
+  }
+}
