@@ -11,20 +11,23 @@ namespace SmtpTest
         {
             Console.Write("Host: ");
             string host = Console.ReadLine();
+            Console.Write("SmtpUser: ");
+            string smtpUser = Console.ReadLine();
+            Console.Write("SmtpPassword: ");
+            string smtpPassword = Console.ReadLine();
             Console.Write("SenderEmail: ");
             string senderEmail = Console.ReadLine();
-            Console.Write("SenderPassword: ");
-            string senderPassword = Console.ReadLine();
             Console.Write("Receiver: ");
-            string receiver = Console.ReadLine();
+            string receiverEmail = Console.ReadLine();
 
             SmtpClient client = new SmtpClient(host)
             {
-                Port = 587,
-                Credentials = new NetworkCredential(senderEmail, senderPassword)
+                EnableSsl = true,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(smtpUser, smtpPassword)
             };
 
-            MailMessage message = new MailMessage(senderEmail, receiver)
+            MailMessage message = new MailMessage(senderEmail, receiverEmail)
             {
                 Subject = "Hello World!",
                 Body = "This is a test email :)"
